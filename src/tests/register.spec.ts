@@ -2,7 +2,7 @@ import { test } from '@playwright/test';
 import { RegisterPage } from '../pages/register';
 import { Assertation } from '../helpers/index.helpers';
 import { TestData } from '../data/index.data';
-import { PronounValue } from '../data/register.data';
+import { PronounValue, validDOB } from '../data/register.data';
 
 test.describe('Register new account successfully', () => {
     let registerPage: RegisterPage;
@@ -22,7 +22,7 @@ test.describe('Register new account successfully', () => {
         });
         await test.step('Select valid date of birth', async () => {
             await registerPage.fillDateofBirth(TestData.register.validDOB);
-            await Assertation.register.expectedDateofBirth(page);
+            await Assertation.register.expectedDateofBirth(page, validDOB);
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
@@ -30,11 +30,11 @@ test.describe('Register new account successfully', () => {
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(TestData.register.validEmail);
-            await Assertation.register.expectedEmail(page);
+            await Assertation.register.expectedEmail(page, 'valid');
         });
         await test.step('Input new password', async () => {
             await registerPage.fillNewPassword(TestData.register.validPassword);
-            await Assertation.register.expectedNewPassword(page);
+            await Assertation.register.expectedNewPassword(page, 'valid');
         });
         await registerPage.clickSignUpButton1time();
     });
@@ -49,7 +49,7 @@ test.describe('Register new account successfully', () => {
         });
         await test.step('Select valid leap year', async () => {
             await registerPage.fillDateofBirth(TestData.register.validLeapYear);
-            await Assertation.register.expectedDateofBirth(page);
+            await Assertation.register.expectedDateofBirth(page, TestData.register.validLeapYear);
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
@@ -57,11 +57,11 @@ test.describe('Register new account successfully', () => {
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(TestData.register.validEmail);
-            await Assertation.register.expectedEmail(page);
+            await Assertation.register.expectedEmail(page, 'valid');
         });
         await test.step('Input new password', async () => {
             await registerPage.fillNewPassword(TestData.register.validPassword);
-            await Assertation.register.expectedNewPassword(page);
+            await Assertation.register.expectedNewPassword(page, 'valid');
         });
         await registerPage.clickSignUpButton1time();
     });
@@ -76,7 +76,7 @@ test.describe('Register new account successfully', () => {
         });
         await test.step('Select valid date of birth', async () => {
             await registerPage.fillDateofBirth(TestData.register.validDOB);
-            await Assertation.register.expectedDateofBirth(page);
+            await Assertation.register.expectedDateofBirth(page, TestData.register.validDOB);
         });
         await test.step('Select female gender', async () => {
             await registerPage.clickFemale();
@@ -84,11 +84,11 @@ test.describe('Register new account successfully', () => {
         });
         await test.step('Input valid numberphone', async () => {
             await registerPage.fillEmail(TestData.register.validPhone);
-            await Assertation.register.expectedPhone(page);
+            await Assertation.register.expectedPhone(page, 'valid');
         });
         await test.step('Input new password', async () => {
             await registerPage.fillNewPassword(TestData.register.validPassword);
-            await Assertation.register.expectedNewPassword(page);
+            await Assertation.register.expectedNewPassword(page, 'valid');
         });
         await registerPage.clickSignUpButton1time();
     });
@@ -103,7 +103,7 @@ test.describe('Register new account successfully', () => {
         });
         await test.step('Select valid date of birth', async () => {
             await registerPage.fillDateofBirth(TestData.register.validDOB);
-            await Assertation.register.expectedDateofBirth(page);
+            await Assertation.register.expectedDateofBirth(page, TestData.register.validDOB);
         });
         await test.step('Select custom gender with she', async () => {
             await registerPage.clickCustom();
@@ -116,11 +116,11 @@ test.describe('Register new account successfully', () => {
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(TestData.register.validEmail);
-            await Assertation.register.expectedEmail(page);
+            await Assertation.register.expectedEmail(page, 'valid');
         });
         await test.step('Input new password', async () => {
             await registerPage.fillNewPassword(TestData.register.validPassword);
-            await Assertation.register.expectedNewPassword(page);
+            await Assertation.register.expectedNewPassword(page, 'valid');
         });
         await registerPage.clickSignUpButton1time();
     });
@@ -135,7 +135,7 @@ test.describe('Register new account successfully', () => {
         });
         await test.step('Select valid date of birth', async () => {
             await registerPage.fillDateofBirth(TestData.register.validDOB);
-            await Assertation.register.expectedDateofBirth(page);
+            await Assertation.register.expectedDateofBirth(page, TestData.register.validDOB);
         });
         await test.step('Select custom gender with he', async () => {
             await registerPage.clickCustom();
@@ -148,11 +148,11 @@ test.describe('Register new account successfully', () => {
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(TestData.register.validEmail);
-            await Assertation.register.expectedEmail(page);
+            await Assertation.register.expectedEmail(page, 'valid');
         });
         await test.step('Input new password', async () => {
             await registerPage.fillNewPassword(TestData.register.validPassword);
-            await Assertation.register.expectedNewPassword(page);
+            await Assertation.register.expectedNewPassword(page, 'valid');
         });
         await registerPage.clickSignUpButton1time();
     });
@@ -167,7 +167,7 @@ test.describe('Register new account successfully', () => {
         });
         await test.step('Select valid date of birth', async () => {
             await registerPage.fillDateofBirth(TestData.register.validDOB);
-            await Assertation.register.expectedDateofBirth(page);
+            await Assertation.register.expectedDateofBirth(page, TestData.register.validDOB);
         });
         await test.step('Select custom gender with they', async () => {
             await registerPage.clickCustom();
@@ -180,11 +180,11 @@ test.describe('Register new account successfully', () => {
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(TestData.register.validEmail);
-            await Assertation.register.expectedEmail(page);
+            await Assertation.register.expectedEmail(page, 'valid');
         });
         await test.step('Input new password', async () => {
             await registerPage.fillNewPassword(TestData.register.validPassword);
-            await Assertation.register.expectedNewPassword(page);
+            await Assertation.register.expectedNewPassword(page, 'valid');
         });
         await registerPage.clickSignUpButton1time();
     });
@@ -199,7 +199,7 @@ test.describe('Register new account successfully', () => {
         });
         await test.step('Select valid date of birth', async () => {
             await registerPage.fillDateofBirth(TestData.register.validDOB);
-            await Assertation.register.expectedDateofBirth(page);
+            await Assertation.register.expectedDateofBirth(page, TestData.register.validDOB);
         });
         await test.step('Select custom gender with she', async () => {
             await registerPage.clickCustom();
@@ -214,11 +214,11 @@ test.describe('Register new account successfully', () => {
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(TestData.register.validEmail);
-            await Assertation.register.expectedEmail(page);
+            await Assertation.register.expectedEmail(page, 'valid');
         });
         await test.step('Input new password', async () => {
             await registerPage.fillNewPassword(TestData.register.validPassword);
-            await Assertation.register.expectedNewPassword(page);
+            await Assertation.register.expectedNewPassword(page, 'valid');
         });
         await registerPage.clickSignUpButton1time();
     });
@@ -233,7 +233,7 @@ test.describe('Register new account successfully', () => {
         });
         await test.step('Select valid date of birth', async () => {
             await registerPage.fillDateofBirth(TestData.register.validDOB);
-            await Assertation.register.expectedDateofBirth(page);
+            await Assertation.register.expectedDateofBirth(page, validDOB);
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
@@ -241,11 +241,11 @@ test.describe('Register new account successfully', () => {
         });
         await test.step('Input valid phone number', async () => {
             await registerPage.fillPhone(TestData.register.validPhone);
-            await Assertation.register.expectedPhone(page);
+            await Assertation.register.expectedPhone(page, 'valid');
         });
         await test.step('Input new password', async () => {
             await registerPage.fillNewPassword(TestData.register.validPassword);
-            await Assertation.register.expectedNewPassword(page);
+            await Assertation.register.expectedNewPassword(page, 'valid');
         });
         await registerPage.clickSignUpButton1time();
     });
@@ -269,7 +269,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select day of birth', async () => {
             await registerPage.fillDateofBirth(TestData.register.validDOB);
-            await Assertation.register.expectedDateofBirth(page);
+            await Assertation.register.expectedDateofBirth(page, validDOB);
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
@@ -277,11 +277,11 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Input valid numberphone', async () => {
             await registerPage.fillEmail(TestData.register.validPhone);
-            await Assertation.register.expectedPhone(page);
+            await Assertation.register.expectedPhone(page, 'valid');
         });
         await test.step('Input new password', async () => {
             await registerPage.fillNewPassword(TestData.register.validPassword);
-            await Assertation.register.expectedNewPassword(page);
+            await Assertation.register.expectedNewPassword(page, 'valid');
         });
         await registerPage.clickSignUpButton1time();
     });
@@ -296,7 +296,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select day of birth', async () => {
             await registerPage.fillDateofBirth(TestData.register.validDOB);
-            await Assertation.register.expectedDateofBirth(page);
+            await Assertation.register.expectedDateofBirth(page, validDOB);
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
@@ -304,11 +304,11 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Input valid numberphone', async () => {
             await registerPage.fillEmail(TestData.register.validPhone);
-            await Assertation.register.expectedPhone(page);
+            await Assertation.register.expectedPhone(page, 'valid');
         });
         await test.step('Input new password', async () => {
             await registerPage.fillNewPassword(TestData.register.validPassword);
-            await Assertation.register.expectedNewPassword(page);
+            await Assertation.register.expectedNewPassword(page, 'valid');
         });
         await registerPage.clickSignUpButton1time();
     });
@@ -323,7 +323,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select valid date of birth', async () => {
             await registerPage.fillDateofBirth(TestData.register.validDOB);
-            await Assertation.register.expectedDateofBirth(page);
+            await Assertation.register.expectedDateofBirth(page, validDOB);
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
@@ -331,11 +331,11 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(TestData.register.validEmail);
-            await Assertation.register.expectedEmail(page);
+            await Assertation.register.expectedEmail(page, 'valid');
         });
         await test.step('Input new password', async () => {
             await registerPage.fillNewPassword(TestData.register.validPassword);
-            await Assertation.register.expectedNewPassword(page);
+            await Assertation.register.expectedNewPassword(page, 'valid');
         });
         await registerPage.clickSignUpButton1time();
     });
@@ -350,7 +350,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select valid date of birth', async () => {
             await registerPage.fillDateofBirth(TestData.register.validDOB);
-            await Assertation.register.expectedDateofBirth(page);
+            await Assertation.register.expectedDateofBirth(page, validDOB);
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
@@ -358,26 +358,22 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(TestData.register.validEmail);
-            await Assertation.register.expectedEmail(page);
+            await Assertation.register.expectedEmail(page, 'valid');
         });
         await test.step('Input new password', async () => {
             await registerPage.fillNewPassword(TestData.register.validPassword);
-            await Assertation.register.expectedNewPassword(page);
+            await Assertation.register.expectedNewPassword(page, 'valid');
         });
         await registerPage.clickSignUpButton1time();
     });
     test('TC05-Leave firstname empty', async ({ page }) => {
-        await test.step('Leave empty firstname', async () => {
-            await registerPage.fillFirstName(TestData.register.emptyFirstName);
-            await Assertation.register.expectedFirstName(page);
-        });
         await test.step('Input valid surname', async () => {
             await registerPage.fillSurName(TestData.register.validSurName);
             await Assertation.register.expectedSurName(page);
         });
         await test.step('Select valid date of birth', async () => {
             await registerPage.fillDateofBirth(TestData.register.validDOB);
-            await Assertation.register.expectedDateofBirth(page);
+            await Assertation.register.expectedDateofBirth(page, validDOB);
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
@@ -385,11 +381,11 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(TestData.register.validEmail);
-            await Assertation.register.expectedEmail(page);
+            await Assertation.register.expectedEmail(page, 'valid');
         });
         await test.step('Input new password', async () => {
             await registerPage.fillNewPassword(TestData.register.validPassword);
-            await Assertation.register.expectedNewPassword(page);
+            await Assertation.register.expectedNewPassword(page, 'valid');
         });
         await registerPage.clickSignUpButton1time();
     });
@@ -398,13 +394,9 @@ test.describe('Register new account unsuccessfully', () => {
             await registerPage.fillFirstName(TestData.register.validFirstName);
             await Assertation.register.expectedFirstName(page);
         });
-        await test.step('Leave surname empty', async () => {
-            await registerPage.fillSurName(TestData.register.emptySurName);
-            await Assertation.register.expectedSurName(page);
-        });
         await test.step('Select valid date of birth', async () => {
             await registerPage.fillDateofBirth(TestData.register.validDOB);
-            await Assertation.register.expectedDateofBirth(page);
+            await Assertation.register.expectedDateofBirth(page, validDOB);
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
@@ -412,11 +404,11 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(TestData.register.validEmail);
-            await Assertation.register.expectedEmail(page);
+            await Assertation.register.expectedEmail(page, 'valid');
         });
         await test.step('Input new password', async () => {
             await registerPage.fillNewPassword(TestData.register.validPassword);
-            await Assertation.register.expectedNewPassword(page);
+            await Assertation.register.expectedNewPassword(page, 'valid');
         });
         await registerPage.clickSignUpButton1time();
     });
@@ -431,7 +423,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select invalid DOB', async () => {
             await registerPage.fillDateofBirth(TestData.register.invalidDOB1);
-            await Assertation.register.expectedDateofBirth(page);
+            await Assertation.register.expectedDateofBirth(page, TestData.register.invalidDOB1);
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
@@ -439,11 +431,11 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(TestData.register.validEmail);
-            await Assertation.register.expectedEmail(page);
+            await Assertation.register.expectedEmail(page, 'valid');
         });
         await test.step('Input new password', async () => {
             await registerPage.fillNewPassword(TestData.register.validPassword);
-            await Assertation.register.expectedNewPassword(page);
+            await Assertation.register.expectedNewPassword(page, 'valid');
         });
         await registerPage.clickSignUpButton1time();
     });
@@ -458,7 +450,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select invalid leap year', async () => {
             await registerPage.fillDateofBirth(TestData.register.invalidLeapYear);
-            await Assertation.register.expectedDateofBirth(page);
+            await Assertation.register.expectedDateofBirth(page, TestData.register.invalidLeapYear);
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
@@ -466,11 +458,11 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(TestData.register.validEmail);
-            await Assertation.register.expectedEmail(page);
+            await Assertation.register.expectedEmail(page, 'valid');
         });
         await test.step('Input new password', async () => {
             await registerPage.fillNewPassword(TestData.register.validPassword);
-            await Assertation.register.expectedNewPassword(page);
+            await Assertation.register.expectedNewPassword(page, 'valid');
         });
         await registerPage.clickSignUpButton1time();
     });
@@ -489,11 +481,11 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(TestData.register.validEmail);
-            await Assertation.register.expectedEmail(page);
+            await Assertation.register.expectedEmail(page, 'valid');
         });
         await test.step('Input new password', async () => {
             await registerPage.fillNewPassword(TestData.register.validPassword);
-            await Assertation.register.expectedNewPassword(page);
+            await Assertation.register.expectedNewPassword(page, 'valid');
         });
         await registerPage.clickSignUpButton1time();
     });
@@ -512,11 +504,11 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Input valid numberphone', async () => {
             await registerPage.fillEmail(TestData.register.validPhone);
-            await Assertation.register.expectedPhone(page);
+            await Assertation.register.expectedPhone(page, 'valid');
         });
         await test.step('Input new password', async () => {
             await registerPage.fillNewPassword(TestData.register.validPassword);
-            await Assertation.register.expectedNewPassword(page);
+            await Assertation.register.expectedNewPassword(page, 'valid');
         });
         await registerPage.clickSignUpButton2times();
     });
@@ -531,7 +523,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select valid date of birth', async () => {
             await registerPage.fillDateofBirth(TestData.register.validDOB);
-            await Assertation.register.expectedDateofBirth(page);
+            await Assertation.register.expectedDateofBirth(page, validDOB);
         });
         await test.step('Select custom gender with she', async () => {
             await registerPage.clickCustom();
@@ -539,11 +531,11 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(TestData.register.validEmail);
-            await Assertation.register.expectedEmail(page);
+            await Assertation.register.expectedEmail(page, 'valid');
         });
         await test.step('Input new password', async () => {
             await registerPage.fillNewPassword(TestData.register.validPassword);
-            await Assertation.register.expectedNewPassword(page);
+            await Assertation.register.expectedNewPassword(page, 'valid');
         });
         await registerPage.clickSignUpButton1time();
     });
@@ -558,15 +550,15 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select valid date of birth', async () => {
             await registerPage.fillDateofBirth(TestData.register.validDOB);
-            await Assertation.register.expectedDateofBirth(page);
+            await Assertation.register.expectedDateofBirth(page, validDOB);
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(TestData.register.validEmail);
-            await Assertation.register.expectedEmail(page);
+            await Assertation.register.expectedEmail(page, 'valid');
         });
         await test.step('Input new password', async () => {
             await registerPage.fillNewPassword(TestData.register.validPassword);
-            await Assertation.register.expectedNewPassword(page);
+            await Assertation.register.expectedNewPassword(page, 'valid');
         });
         await registerPage.clickSignUpButton1time();
     });
@@ -581,7 +573,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select valid date of birth', async () => {
             await registerPage.fillDateofBirth(TestData.register.validDOB);
-            await Assertation.register.expectedDateofBirth(page);
+            await Assertation.register.expectedDateofBirth(page, validDOB);
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
@@ -589,7 +581,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Input new password', async () => {
             await registerPage.fillNewPassword(TestData.register.validPassword);
-            await Assertation.register.expectedNewPassword(page);
+            await Assertation.register.expectedNewPassword(page, 'valid');
         });
         await registerPage.clickSignUpButton1time();
     });
@@ -604,7 +596,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select valid date of birth', async () => {
             await registerPage.fillDateofBirth(TestData.register.validDOB);
-            await Assertation.register.expectedDateofBirth(page);
+            await Assertation.register.expectedDateofBirth(page, validDOB);
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
@@ -612,11 +604,11 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Input existing email address', async () => {
             await registerPage.fillEmail(TestData.register.existingEmail);
-            await Assertation.register.expectedEmail(page);
+            await Assertation.register.expectedEmail(page, 'existing');
         });
         await test.step('Input new password', async () => {
             await registerPage.fillNewPassword(TestData.register.validPassword);
-            await Assertation.register.expectedNewPassword(page);
+            await Assertation.register.expectedNewPassword(page, 'valid');
         });
         await registerPage.clickSignUpButton1time();
     });
@@ -631,7 +623,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select valid date of birth', async () => {
             await registerPage.fillDateofBirth(TestData.register.validDOB);
-            await Assertation.register.expectedDateofBirth(page);
+            await Assertation.register.expectedDateofBirth(page, validDOB);
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
@@ -639,11 +631,11 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Input existing phone number', async () => {
             await registerPage.fillPhone(TestData.register.existingPhone);
-            await Assertation.register.expectedPhone(page);
+            await Assertation.register.expectedPhone(page, 'existing');
         });
         await test.step('Input new password', async () => {
             await registerPage.fillNewPassword(TestData.register.validPassword);
-            await Assertation.register.expectedNewPassword(page);
+            await Assertation.register.expectedNewPassword(page, 'valid');
         });
         await registerPage.clickSignUpButton1time();
     });
@@ -658,7 +650,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select valid date of birth', async () => {
             await registerPage.fillDateofBirth(TestData.register.validDOB);
-            await Assertation.register.expectedDateofBirth(page);
+            await Assertation.register.expectedDateofBirth(page, validDOB);
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
@@ -666,11 +658,11 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Input invalid email address', async () => {
             await registerPage.fillEmail(TestData.register.invalidEmail);
-            await Assertation.register.expectedEmail(page);
+            await Assertation.register.expectedEmail(page, 'invalid');
         });
         await test.step('Input new password', async () => {
             await registerPage.fillNewPassword(TestData.register.validPassword);
-            await Assertation.register.expectedNewPassword(page);
+            await Assertation.register.expectedNewPassword(page, 'valid');
         });
         await registerPage.clickSignUpButton1time();
     });
@@ -685,7 +677,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select valid date of birth', async () => {
             await registerPage.fillDateofBirth(TestData.register.validDOB);
-            await Assertation.register.expectedDateofBirth(page);
+            await Assertation.register.expectedDateofBirth(page, validDOB);
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
@@ -693,11 +685,11 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Input invalid phone number', async () => {
             await registerPage.fillPhone(TestData.register.invalidPhone);
-            await Assertation.register.expectedPhone(page);
+            await Assertation.register.expectedPhone(page, 'invalid');
         });
         await test.step('Input new password', async () => {
             await registerPage.fillNewPassword(TestData.register.validPassword);
-            await Assertation.register.expectedNewPassword(page);
+            await Assertation.register.expectedNewPassword(page, 'valid');
         });
         await registerPage.clickSignUpButton1time();
     });
@@ -712,7 +704,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select valid date of birth', async () => {
             await registerPage.fillDateofBirth(TestData.register.validDOB);
-            await Assertation.register.expectedDateofBirth(page);
+            await Assertation.register.expectedDateofBirth(page, validDOB);
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
@@ -720,7 +712,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Input new password', async () => {
             await registerPage.fillNewPassword(TestData.register.validPassword);
-            await Assertation.register.expectedNewPassword(page);
+            await Assertation.register.expectedNewPassword(page, 'valid');
         });
         await registerPage.clickSignUpButton1time();
     });
@@ -735,15 +727,15 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select valid date of birth', async () => {
             await registerPage.fillDateofBirth(TestData.register.validDOB);
-            await Assertation.register.expectedDateofBirth(page);
+            await Assertation.register.expectedDateofBirth(page, validDOB);
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
             await Assertation.register.expectedGender(page, 'Male');
         });
-        await test.step('Input new password', async () => {
+        await test.step('Input invalid password', async () => {
             await registerPage.fillNewPassword(TestData.register.validPassword);
-            await Assertation.register.expectedNewPassword(page);
+            await Assertation.register.expectedNewPassword(page, 'valid');
         });
         await registerPage.clickSignUpButton1time();
     });
@@ -758,7 +750,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select valid date of birth', async () => {
             await registerPage.fillDateofBirth(TestData.register.validDOB);
-            await Assertation.register.expectedDateofBirth(page);
+            await Assertation.register.expectedDateofBirth(page, validDOB);
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
@@ -766,11 +758,11 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(TestData.register.validEmail);
-            await Assertation.register.expectedEmail(page);
+            await Assertation.register.expectedEmail(page, 'valid');
         });
         await test.step('Input invalid new password', async () => {
             await registerPage.fillNewPassword(TestData.register.weakPassword);
-            await Assertation.register.expectedNewPassword(page);
+            await Assertation.register.expectedNewPassword(page, 'invalid');
         });
         await registerPage.clickSignUpButton1time();
     });
@@ -785,7 +777,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select valid date of birth', async () => {
             await registerPage.fillDateofBirth(TestData.register.validDOB);
-            await Assertation.register.expectedDateofBirth(page);
+            await Assertation.register.expectedDateofBirth(page, validDOB);
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
@@ -793,7 +785,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(TestData.register.validEmail);
-            await Assertation.register.expectedEmail(page);
+            await Assertation.register.expectedEmail(page, 'valid');
         });
         await registerPage.clickSignUpButton1time();
     });

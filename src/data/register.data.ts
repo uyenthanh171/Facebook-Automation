@@ -1,4 +1,3 @@
-import { RegisterFormData } from "../pages/register";
 
 //Firstname
 export const validFirstName = 'Thanh';
