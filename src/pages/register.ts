@@ -78,8 +78,8 @@ export class RegisterPage {
         await this.genderCustomRadio.click();
     }
 
-    async selectPronoun(genderKey: '1' | '2' | '6') {
-        const pronounValue = TestData.register.PronounMap[genderKey].key;
+    async selectPronoun(genderLabel: string) {
+        const pronounValue = TestData.register.pronoun[genderLabel].label;
         await this.PronounDropdownList.selectOption(pronounValue);
     }
 

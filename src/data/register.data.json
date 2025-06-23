@@ -1,0 +1,60 @@
+{
+    "firstName": {
+        "valid": "Thanh",
+        "invalid": "123@",
+        "short": "A"
+    },
+    "surName": {
+        "valid": "Nguyen",
+        "invalid": "345*&",
+        "short": "B"
+    },
+    "dateOfBirth": {
+        "valid": { "day": "17", "month": "1", "year": "2001" },
+        "invalid1": { "day": "30", "month": "2", "year": "2005" },
+        "invalid2": { "day": "31", "month": "4", "year": "2009" },
+        "invalidLeapYear": { "day": "29", "month": "2", "year": "2005" },
+        "validLeapYear": { "day": "29", "month": "2", "year": "2004" }
+    },
+    "lastDayOfMonth": {
+        "1": 31,
+        "2": [28, 29],
+        "3": 31,
+        "4": 30,
+        "5": 31,
+        "6": 30,
+        "7": 31,
+        "8": 31,
+        "9": 30,
+        "10": 31,
+        "11": 30,
+        "12": 31
+    },
+    "gender": {
+        "female": "Female",
+        "male": "Male",
+        "custom": "Custom"
+    },
+    "email": {
+        "valid": "thanhnguyen@gmail.com",
+        "invalid": "abc@",
+        "existing": "uyenthanh.nguenvu@gmail.com"
+    },
+    "phone": {
+        "valid": "0905123456",
+        "invalid": "^s^&^78787",
+        "existing": "0961544406"
+    },
+    "pronoun": {
+        "1": { "key": "1", "label": "She: \"Wish her a happy birthday!\"" },
+        "2": { "key": "2", "label": "He: \"Wish him a happy birthday!\"" },
+        "6": { "key": "6", "label": "They: \"Wish them a happy birthday!\"" }
+    },
+    "genderOptional": {
+        "valid": "lessbian"
+    },
+    "password": {
+        "valid": "Thanhnguyen171.,",
+        "weak": "abc123"
+    }
+}

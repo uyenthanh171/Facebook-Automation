@@ -1,4 +1,4 @@
-import * as register from './register.data';
+import * as register from '../data/register.data.json';
 export const TestData = {
     register,
 }
