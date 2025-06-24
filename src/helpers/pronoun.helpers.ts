@@ -6,9 +6,9 @@ import { RegisterPage } from '../pages/register';
 export async function pronounHelpers(
     page: Page,
     registerPage: RegisterPage,
-    pronounValue: '1' | '2' | '6'
+    pronounValue: string
 ) {
-    const expectedKey = TestData.register.pronoun[pronounValue].key;
+    const expectedKey = TestData.register.pronoun[pronounValue];
     await registerPage.selectPronoun(pronounValue);
     await Assertation.register.expectedCustomGender(page, expectedKey);
 }

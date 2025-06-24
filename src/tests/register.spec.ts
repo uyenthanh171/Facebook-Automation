@@ -119,11 +119,11 @@ test.describe('Register new account successfully', () => {
             await registerPage.clickCustom();
             await Assertation.register.expectedGender(page, gender.custom);
 
-            const fixedValue: keyof typeof TestData.register.pronoun = '1';
-            const expectedKey = TestData.register.pronoun[fixedValue].key;
+            const fixedValue = 'She: \"Wish her a happy birthday!\"';
+            const expectedKey = TestData.register.pronoun['She: \"Wish her a happy birthday!\"'];
 
             await registerPage.selectPronoun(fixedValue);
-            await Assertation.register.expectedCustomGender(page, '1');
+            await Assertation.register.expectedCustomGender(page, expectedKey);
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(email.valid);
@@ -151,8 +151,16 @@ test.describe('Register new account successfully', () => {
         await test.step('Select custom gender with he', async () => {
             await registerPage.clickCustom();
             await Assertation.register.expectedGender(page, gender.custom);
-            await registerPage.selectPronoun("She: \"Wish her a happy birthday!\"");
-            await pronounHelpers(page, registerPage, '1');
+
+            const fixedValue = 'He: \"Wish him a happy birthday!\"';
+            const expectedKey = TestData.register.pronoun['He: \"Wish him a happy birthday!\"'];
+
+            await registerPage.selectPronoun(fixedValue);
+            await Assertation.register.expectedCustomGender(page, expectedKey);
+        });
+        await test.step('Input valid email address', async () => {
+            await registerPage.fillEmail(email.valid);
+            await Assertation.register.expectedEmail(page, email.valid);
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(email.valid);
@@ -180,8 +188,16 @@ test.describe('Register new account successfully', () => {
         await test.step('Select custom gender with they', async () => {
             await registerPage.clickCustom();
             await Assertation.register.expectedGender(page, gender.custom);
-            await registerPage.selectPronoun("He: \"Wish him a happy birthday!\"");
-            await pronounHelpers(page, registerPage, '2');
+
+            const fixedValue = 'They: \"Wish them a happy birthday!\"';
+            const expectedKey = TestData.register.pronoun['They: \"Wish them a happy birthday!\"'];
+
+            await registerPage.selectPronoun(fixedValue);
+            await Assertation.register.expectedCustomGender(page, expectedKey);
+        });
+        await test.step('Input valid email address', async () => {
+            await registerPage.fillEmail(email.valid);
+            await Assertation.register.expectedEmail(page, email.valid);
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(email.valid);
@@ -209,8 +225,16 @@ test.describe('Register new account successfully', () => {
         await test.step('Select custom gender with they', async () => {
             await registerPage.clickCustom();
             await Assertation.register.expectedGender(page, gender.custom);
-            await registerPage.selectPronoun("They: \"Wish them a happy birthday!\"");
-            await pronounHelpers(page, registerPage, '6');
+
+            const fixedValue = 'They: \"Wish them a happy birthday!\"';
+            const expectedKey = TestData.register.pronoun['They: \"Wish them a happy birthday!\"'];
+
+            await registerPage.selectPronoun(fixedValue);
+            await Assertation.register.expectedCustomGender(page, expectedKey);
+        });
+        await test.step('Input valid email address', async () => {
+            await registerPage.fillEmail(email.valid);
+            await Assertation.register.expectedEmail(page, email.valid);
         });
         await test.step('Input value to gender optional field', async () => {
             await registerPage.fillGenderOptional(genderOptional.valid);

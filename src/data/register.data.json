@@ -10,15 +10,38 @@
         "short": "B"
     },
     "dateOfBirth": {
-        "valid": { "day": "17", "month": "1", "year": "2001" },
-        "invalid1": { "day": "30", "month": "2", "year": "2005" },
-        "invalid2": { "day": "31", "month": "4", "year": "2009" },
-        "invalidLeapYear": { "day": "29", "month": "2", "year": "2005" },
-        "validLeapYear": { "day": "29", "month": "2", "year": "2004" }
+        "valid": {
+            "day": "17",
+            "month": "1",
+            "year": "2001"
+        },
+        "invalid1": {
+            "day": "30",
+            "month": "2",
+            "year": "2005"
+        },
+        "invalid2": {
+            "day": "31",
+            "month": "4",
+            "year": "2009"
+        },
+        "invalidLeapYear": {
+            "day": "29",
+            "month": "2",
+            "year": "2005"
+        },
+        "validLeapYear": {
+            "day": "29",
+            "month": "2",
+            "year": "2004"
+        }
     },
     "lastDayOfMonth": {
         "1": 31,
-        "2": [28, 29],
+        "2": [
+            28,
+            29
+        ],
         "3": 31,
         "4": 30,
         "5": 31,
@@ -31,9 +54,9 @@
         "12": 31
     },
     "gender": {
-        "female": "Female",
-        "male": "Male",
-        "custom": "Custom"
+        "female": "1",
+        "male": "2",
+        "custom": "6"
     },
     "email": {
         "valid": "thanhnguyen@gmail.com",
@@ -46,9 +69,9 @@
         "existing": "0961544406"
     },
     "pronoun": {
-        "1": { "key": "1", "label": "She: \"Wish her a happy birthday!\"" },
-        "2": { "key": "2", "label": "He: \"Wish him a happy birthday!\"" },
-        "6": { "key": "6", "label": "They: \"Wish them a happy birthday!\"" }
+        "She: \"Wish her a happy birthday!\"": "1" ,
+        "He: \"Wish him a happy birthday!\"": "2" ,
+        "They: \"Wish them a happy birthday!\"": "6" 
     },
     "genderOptional": {
         "valid": "lessbian"

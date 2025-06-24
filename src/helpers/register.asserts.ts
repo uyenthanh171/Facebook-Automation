@@ -36,7 +36,7 @@ export async function expectedDateofBirth(page: Page, dob: { day: string | numbe
     const yearInput = page.getByLabel('Year');
     await expect(dayInput).toHaveValue(String(day));
     await expect(monthInput).toHaveValue(String(month));
-    await expect(yearInput).toHaveValue(String(month));
+    await expect(yearInput).toHaveValue(String(year));
 }
 
 export async function expectedGender(page: Page, expectedGender: string) {
