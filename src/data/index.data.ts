@@ -1,5 +1,14 @@
-import * as register from '../data/register.data.json';
+import {firstName, surName, dateOfBirth, gender, email, phone, pronoun, genderOptional, password} from'./register.data'
+
 export const TestData = {
-    register,
+    firstName,
+    surName,
+    dateOfBirth,
+    gender,
+    email,
+    phone,
+    pronoun,
+    genderOptional,
+    password,
 }
 

@@ -79,7 +79,7 @@ export class RegisterPage {
     }
 
     async selectPronoun(genderLabel: string) {
-        const pronounValue = TestData.register.pronoun[genderLabel];
+        const pronounValue = TestData.pronoun[genderLabel];
         await this.PronounDropdownList.selectOption(pronounValue);
     }
 

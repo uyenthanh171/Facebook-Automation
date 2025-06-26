@@ -8,7 +8,7 @@ export async function pronounHelpers(
     registerPage: RegisterPage,
     pronounValue: string
 ) {
-    const expectedKey = TestData.register.pronoun[pronounValue];
+    const expectedKey = TestData.pronoun[pronounValue];
     await registerPage.selectPronoun(pronounValue);
     await Assertation.register.expectedCustomGender(page, expectedKey);
 }

@@ -1,30 +1,28 @@
 import { Page, expect } from '@playwright/test';
 import { TestData } from '../data/index.data';
-import { isEmail, isPhone } from '../utils/regex.utils';
+
 
 export async function expectedFirstName(page: Page) {
-    const { firstName } = TestData.register;
 
     const firstNameInput = page.getByLabel('First name');
     const actualFirstName = await firstNameInput.inputValue();
 
-    if (actualFirstName === firstName.valid) {
-        await expect(firstNameInput).toHaveValue(firstName.valid);
-    } else if (actualFirstName === firstName.short) {
-        await expect(firstNameInput).toHaveValue(firstName.short);
+    if (actualFirstName === TestData.firstName.valid()) {
+        await expect(firstNameInput).toHaveValue(TestData.firstName.valid());
+    } else if (actualFirstName === TestData.firstName.short()) {
+        await expect(firstNameInput).toHaveValue(TestData.firstName.short());
     }
 }
 
 export async function expectedSurName(page: Page) {
-    const { surName } = TestData.register;
 
     const surNameInput = page.getByLabel('Surname');
     const actualSurName = await surNameInput.inputValue();
 
-    if (actualSurName === surName.valid) {
-        await expect(surNameInput).toHaveValue(surName.valid);
-    } else if (actualSurName === surName.short) {
-        await expect(surNameInput).toHaveValue(surName.short);
+    if (actualSurName === TestData.surName.valid()) {
+        await expect(surNameInput).toHaveValue(TestData.surName.valid());
+    } else if (actualSurName === TestData.surName.short()) {
+        await expect(surNameInput).toHaveValue(TestData.surName.short());
     }
 
 } // con thieu mot vai truong hop khac
@@ -40,7 +38,7 @@ export async function expectedDateofBirth(page: Page, dob: { day: string | numbe
 }
 
 export async function expectedGender(page: Page, expectedGender: string) {
-    const { male, female, custom } = TestData.register.gender
+    const { male, female, custom } = TestData.gender
     const maleRadio = page.getByRole('radio', { name: 'Male', exact: true });
     const femaleRadio = page.getByRole('radio', { name: 'Female', exact: true });
     const customRadio = page.getByRole('radio', { name: 'Custom', exact: true });
@@ -70,45 +68,59 @@ export async function expectedCustomGender(page: Page, expectedKey: string) {
 
 export async function expectedGenderOptinal(page: Page) {
     const genderOptionalInput = page.locator('#custom_gender');
-    await expect(genderOptionalInput).toHaveValue(TestData.register.genderOptional.valid)
+    await expect(genderOptionalInput).toHaveValue(TestData.genderOptional.valid())
 }
 
-export async function expectedEmail(page: Page, caseType: string) {
-    const { email } = TestData.register
+export async function expectedEmail(page: Page) {
+
     const EmailorPhoneInput = page.getByLabel('Mobile number or email address');
     const actualEmailInput = await EmailorPhoneInput.inputValue();
-    if (caseType === 'valid') {
-        await expect(EmailorPhoneInput).toHaveValue(email.valid);
-        expect(isEmail(actualEmailInput)).toBe(true);
-    } else if (caseType === 'invalid') {
-        await expect(EmailorPhoneInput).toHaveValue(email.invalid);
-        expect(isEmail(actualEmailInput)).toBe(false)
-    } else if (caseType === 'existing') {
-        await expect(EmailorPhoneInput).toHaveValue(email.existing);
+    if (actualEmailInput === 'valid') {
+        await expect(EmailorPhoneInput).toHaveValue(TestData.email.valid());
+    } else if (actualEmailInput === 'dlbAtSymbol') {
+        await expect(EmailorPhoneInput).toHaveValue(TestData.email.dblAtSymbol());
+    } else if (actualEmailInput === 'dotNatSymbol') {
+        await expect(EmailorPhoneInput).toHaveValue(TestData.email.dotNatSymbol());
+    } else if (actualEmailInput === 'atSymbolNdot') {
+        await expect(EmailorPhoneInput).toHaveValue(TestData.email.atSymbolNdot());
+    } else if (actualEmailInput === 'lackDot') {
+        await expect(EmailorPhoneInput).toHaveValue(TestData.email.lackDot());
+    } else if (actualEmailInput === 'lackDomain') {
+        await expect(EmailorPhoneInput).toHaveValue(TestData.email.lackDomain());
+    } else if (actualEmailInput === 'existing') {
+        await expect(EmailorPhoneInput).toHaveValue(TestData.email.existing);
     }
 }
 
-export async function expectedPhone(page: Page, caseType: string) {
-    const { phone } = TestData.register
+export async function expectedPhone(page: Page) {
+
     const EmailorPhoneInput = page.getByLabel('Mobile number or email address');
     const acutalPhoneInput = await EmailorPhoneInput.inputValue();
-    if (caseType === 'valid') {
-        await expect(EmailorPhoneInput).toHaveValue(phone.valid);
-        expect(isPhone(acutalPhoneInput)).toBe(true);
-    } else if (caseType === 'invalid') {
-        await expect(EmailorPhoneInput).toHaveValue(phone.invalid);
-    } else if (caseType === 'existing') {
-        await expect(EmailorPhoneInput).toHaveValue(phone.existing)
+    if (acutalPhoneInput === TestData.phone.valid()) {
+        await expect(EmailorPhoneInput).toHaveValue(TestData.phone.valid());
+    } else if (acutalPhoneInput === TestData.phone.short()) {
+        await expect(EmailorPhoneInput).toHaveValue(TestData.phone.short());
+    } else if (acutalPhoneInput === TestData.phone.onlyAlpha()) {
+        await expect(EmailorPhoneInput).toHaveValue(TestData.phone.onlyAlpha());
+    } else if (acutalPhoneInput === TestData.phone.existing) {
+        await expect(EmailorPhoneInput).toHaveValue(TestData.phone.existing)
     }
 }
 
-export async function expectedNewPassword(page: Page, caseType: string) {
-    const { password } = TestData.register
+export async function expectedNewPassword(page: Page) {
+
     const newPassword = page.getByLabel('New password');
-    if (caseType === 'valid') {
-        await expect(newPassword).toHaveValue(password.valid)
-    } else if (caseType === 'invalid') {
-        await expect(newPassword).toHaveValue(password.weak)
+    const actualPasswordInput = await newPassword.inputValue();
+    if (actualPasswordInput === 'valid') {
+        await expect(newPassword).toHaveValue(TestData.password.valid())
+    } else if (actualPasswordInput === 'alphaAndNumber') {
+        await expect(newPassword).toHaveValue(TestData.password.alphaAndNumber())
+    } else if (actualPasswordInput === 'onlyAlpha') {
+        await expect(newPassword).toHaveValue(TestData.password.onlyAlpha())
+    } else if (actualPasswordInput === 'onlyNumber') {
+        await expect(newPassword).toHaveValue(TestData.password.onlyNumber())
+    } else if (actualPasswordInput === 'short') {
+        await expect(newPassword).toHaveValue(TestData.password.short())
     }
 }
 
