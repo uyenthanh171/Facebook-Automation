@@ -110,10 +110,9 @@ test.describe('Register new account successfully', () => {
             await registerPage.clickCustom();
             await Assertation.register.expectedGender(page, TestData.gender.custom);
 
-            const fixedValue = 'She: \"Wish her a happy birthday!\"';
             const expectedKey = TestData.pronoun['She: \"Wish her a happy birthday!\"'];
 
-            await registerPage.selectPronoun(fixedValue);
+            await registerPage.selectPronoun('1');
             await Assertation.register.expectedCustomGender(page, expectedKey);
         });
         await test.step('Input valid email address', async () => {
@@ -143,10 +142,9 @@ test.describe('Register new account successfully', () => {
             await registerPage.clickCustom();
             await Assertation.register.expectedGender(page, TestData.gender.custom);
 
-            const fixedValue = 'He: \"Wish him a happy birthday!\"';
             const expectedKey = TestData.pronoun['He: \"Wish him a happy birthday!\"'];
 
-            await registerPage.selectPronoun(fixedValue);
+            await registerPage.selectPronoun('2');
             await Assertation.register.expectedCustomGender(page, expectedKey);
         });
         await test.step('Input valid email address', async () => {
@@ -180,10 +178,9 @@ test.describe('Register new account successfully', () => {
             await registerPage.clickCustom();
             await Assertation.register.expectedGender(page, TestData.gender.custom);
 
-            const fixedValue = 'They: \"Wish them a happy birthday!\"';
             const expectedKey = TestData.pronoun['They: \"Wish them a happy birthday!\"'];
 
-            await registerPage.selectPronoun(fixedValue);
+            await registerPage.selectPronoun('6');
             await Assertation.register.expectedCustomGender(page, expectedKey);
         });
         await test.step('Input valid email address', async () => {
@@ -216,11 +213,8 @@ test.describe('Register new account successfully', () => {
         await test.step('Select custom gender with they', async () => {
             await registerPage.clickCustom();
             await Assertation.register.expectedGender(page, TestData.gender.custom);
-
-            const fixedValue = 'They: \"Wish them a happy birthday!\"';
             const expectedKey = TestData.pronoun['They: \"Wish them a happy birthday!\"'];
-
-            await registerPage.selectPronoun(fixedValue);
+            await registerPage.selectPronoun('6');
             await Assertation.register.expectedCustomGender(page, expectedKey);
         });
         await test.step('Input valid email address', async () => {
@@ -228,8 +222,9 @@ test.describe('Register new account successfully', () => {
             await Assertation.register.expectedEmail(page);
         });
         await test.step('Input value to gender optional field', async () => {
-            await registerPage.fillGenderOptional(TestData.genderOptional.valid());
-            await Assertation.register.expectedGenderOptinal(page);
+            const genderValue = TestData.genderOptional.valid()
+            await registerPage.fillGenderOptional(genderValue);
+            await Assertation.register.expectedGenderOptinal(page, genderValue);
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(TestData.email.valid());
@@ -256,7 +251,7 @@ test.describe('Register new account successfully', () => {
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
-            await Assertation.register.expectedGender(page, TestData.gender.female);
+            await Assertation.register.expectedGender(page, TestData.gender.male);
         });
         await test.step('Input valid phone number', async () => {
             await registerPage.fillPhone(TestData.phone.valid());
@@ -295,7 +290,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
-            await Assertation.register.expectedGender(page, TestData.gender.female);
+            await Assertation.register.expectedGender(page, TestData.gender.male);
         });
         await test.step('Input valid numberphone', async () => {
             await registerPage.fillEmail(TestData.email.valid());
@@ -322,7 +317,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
-            await Assertation.register.expectedGender(page, TestData.gender.female);
+            await Assertation.register.expectedGender(page, TestData.gender.male);
         });
         await test.step('Input valid numberphone', async () => {
             await registerPage.fillEmail(TestData.email.valid());
@@ -349,7 +344,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
-            await Assertation.register.expectedGender(page, TestData.gender.female);
+            await Assertation.register.expectedGender(page, TestData.gender.male);
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(TestData.email.valid());
@@ -376,7 +371,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
-            await Assertation.register.expectedGender(page, TestData.gender.female);
+            await Assertation.register.expectedGender(page, TestData.gender.male);
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(TestData.email.valid());
@@ -399,7 +394,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
-            await Assertation.register.expectedGender(page, TestData.gender.female);
+            await Assertation.register.expectedGender(page, TestData.gender.male);
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(TestData.email.valid());
@@ -422,7 +417,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
-            await Assertation.register.expectedGender(page, TestData.gender.female);
+            await Assertation.register.expectedGender(page, TestData.gender.male);
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(TestData.email.valid());
@@ -449,7 +444,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
-            await Assertation.register.expectedGender(page, TestData.gender.female);
+            await Assertation.register.expectedGender(page, TestData.gender.male);
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(TestData.email.valid());
@@ -476,7 +471,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
-            await Assertation.register.expectedGender(page, TestData.gender.female);
+            await Assertation.register.expectedGender(page, TestData.gender.male);
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(TestData.email.valid());
@@ -499,7 +494,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
-            await Assertation.register.expectedGender(page, TestData.gender.female);
+            await Assertation.register.expectedGender(page, TestData.gender.male);
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(TestData.email.valid());
@@ -522,7 +517,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
-            await Assertation.register.expectedGender(page, TestData.gender.female);
+            await Assertation.register.expectedGender(page, TestData.gender.male);
         });
         await test.step('Input valid numberphone', async () => {
             await registerPage.fillEmail(TestData.email.valid());
@@ -599,7 +594,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
-            await Assertation.register.expectedGender(page, TestData.gender.female);
+            await Assertation.register.expectedGender(page, TestData.gender.male);
         });
         await test.step('Input new password', async () => {
             await registerPage.fillNewPassword(TestData.password.valid());
@@ -622,7 +617,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
-            await Assertation.register.expectedGender(page, TestData.gender.female);
+            await Assertation.register.expectedGender(page, TestData.gender.male);
         });
         await test.step('Input existing email address', async () => {
             await registerPage.fillEmail(TestData.email.existing);
@@ -649,7 +644,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
-            await Assertation.register.expectedGender(page, TestData.gender.female);
+            await Assertation.register.expectedGender(page, TestData.gender.male);
         });
         await test.step('Input existing phone number', async () => {
             await registerPage.fillPhone(TestData.phone.existing);
@@ -676,7 +671,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
-            await Assertation.register.expectedGender(page, TestData.gender.female);
+            await Assertation.register.expectedGender(page, TestData.gender.male);
         });
         await test.step('Input invalid email address - lackdomain', async () => {
             await registerPage.fillEmail(TestData.email.lackDomain());
@@ -703,7 +698,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
-            await Assertation.register.expectedGender(page, TestData.gender.female);
+            await Assertation.register.expectedGender(page, TestData.gender.male);
         });
         await test.step('Input invalid phone number - OnlyAlpha ', async () => {
             await registerPage.fillPhone(TestData.phone.onlyAlpha());
@@ -730,7 +725,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
-            await Assertation.register.expectedGender(page, TestData.gender.female);
+            await Assertation.register.expectedGender(page, TestData.gender.male);
         });
         await test.step('Input new password', async () => {
             await registerPage.fillNewPassword(TestData.password.valid());
@@ -753,7 +748,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
-            await Assertation.register.expectedGender(page, TestData.gender.female);
+            await Assertation.register.expectedGender(page, TestData.gender.male);
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(TestData.email.valid());
@@ -765,7 +760,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await registerPage.clickSignUpButton1time();
     });
-    test('TC21-Leave password empty', async ({ page }) => {
+    test('TC29-Leave password empty', async ({ page }) => {
         await test.step('Input valid firstname', async () => {
             await registerPage.fillFirstName(TestData.firstName.valid());
             await Assertation.register.expectedFirstName(page);
@@ -780,7 +775,7 @@ test.describe('Register new account unsuccessfully', () => {
         });
         await test.step('Select male gender', async () => {
             await registerPage.clickMale();
-            await Assertation.register.expectedGender(page, TestData.gender.female);
+            await Assertation.register.expectedGender(page, TestData.gender.male);
         });
         await test.step('Input valid email address', async () => {
             await registerPage.fillEmail(TestData.email.valid());

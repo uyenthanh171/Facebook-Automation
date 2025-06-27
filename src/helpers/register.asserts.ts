@@ -66,9 +66,9 @@ export async function expectedCustomGender(page: Page, expectedKey: string) {
     }
 }
 
-export async function expectedGenderOptinal(page: Page) {
+export async function expectedGenderOptinal(page: Page, genderOptional: string) {
     const genderOptionalInput = page.locator('#custom_gender');
-    await expect(genderOptionalInput).toHaveValue(TestData.genderOptional.valid())
+    await expect(genderOptionalInput).toHaveValue(genderOptional)
 }
 
 export async function expectedEmail(page: Page) {

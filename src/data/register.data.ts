@@ -33,7 +33,7 @@ export const gender = {
 }
 
 export const email = {
-    "valid": () => faker.internet.email(),
+    "valid": () => faker.internet.email({ firstName: faker.person.firstName(), lastName: faker.person.lastName(), provider: 'gmail.com' }),
     "dblAtSymbol": () => faker.string.alphanumeric({ length: 10 }) + '@@' + faker.string.alpha({ length: 5 }) + '.com',
     "dotNatSymbol": () => faker.string.alphanumeric({ length: 10 }) + '.@' + faker.string.alpha({ length: 5 }) + '.com',
     "atSymbolNdot": () => faker.string.alphanumeric({ length: 10 }) + '@.' + faker.string.alpha({ length: 5 }) + '.com',
