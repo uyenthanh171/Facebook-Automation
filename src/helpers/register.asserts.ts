@@ -1,31 +1,20 @@
-import { Page, expect } from '@playwright/test';
-import { TestData } from '../data/index.data';
+import { Page, expect , Locator } from '@playwright/test';
+import { testData } from '../data/index.data';
 
-
-export async function expectedFirstName(page: Page) {
+export async function expectedFirstName(page: Page, type: keyof typeof testData.firstName) {
 
     const firstNameInput = page.getByLabel('First name');
-    const actualFirstName = await firstNameInput.inputValue();
-
-    if (actualFirstName === TestData.firstName.valid()) {
-        await expect(firstNameInput).toHaveValue(TestData.firstName.valid());
-    } else if (actualFirstName === TestData.firstName.short()) {
-        await expect(firstNameInput).toHaveValue(TestData.firstName.short());
-    }
+    const expectedFirstNameInput = testData.firstName[type]();
+    const actualFirstNameInput = await firstNameInput.inputValue();
+    expect(actualFirstNameInput).toEqual(expectedFirstNameInput)
 }
 
-export async function expectedSurName(page: Page) {
-
+export async function expectedSurName(page: Page, type: keyof typeof testData.surName) {
     const surNameInput = page.getByLabel('Surname');
-    const actualSurName = await surNameInput.inputValue();
-
-    if (actualSurName === TestData.surName.valid()) {
-        await expect(surNameInput).toHaveValue(TestData.surName.valid());
-    } else if (actualSurName === TestData.surName.short()) {
-        await expect(surNameInput).toHaveValue(TestData.surName.short());
-    }
-
-} // con thieu mot vai truong hop khac
+    const expectedSurNameInput = testData.surName[type]();
+    const actualSurNameInput = await surNameInput.inputValue();
+    expect(actualSurNameInput).toEqual(expectedSurNameInput)
+}
 
 export async function expectedDateofBirth(page: Page, dob: { day: string | number, month: string | number, year: string | number }) {
     const { day, month, year } = dob
@@ -38,7 +27,7 @@ export async function expectedDateofBirth(page: Page, dob: { day: string | numbe
 }
 
 export async function expectedGender(page: Page, expectedGender: string) {
-    const { male, female, custom } = TestData.gender
+    const { male, female, custom } = testData.gender
     const maleRadio = page.getByRole('radio', { name: 'Male', exact: true });
     const femaleRadio = page.getByRole('radio', { name: 'Female', exact: true });
     const customRadio = page.getByRole('radio', { name: 'Custom', exact: true });
@@ -51,7 +40,7 @@ export async function expectedGender(page: Page, expectedGender: string) {
     }
 }
 
-export async function expectedCustomGender(page: Page, expectedKey: string) {
+export async function expectedPronoun(page: Page, expectedKey: string) {
     const PronounDropdownList = page.locator('#preferred_pronoun');
     let expectedLabel = '';
     if (expectedKey === '1') {
@@ -71,57 +60,27 @@ export async function expectedGenderOptinal(page: Page, genderOptional: string) 
     await expect(genderOptionalInput).toHaveValue(genderOptional)
 }
 
-export async function expectedEmail(page: Page) {
-
-    const EmailorPhoneInput = page.getByLabel('Mobile number or email address');
-    const actualEmailInput = await EmailorPhoneInput.inputValue();
-    if (actualEmailInput === 'valid') {
-        await expect(EmailorPhoneInput).toHaveValue(TestData.email.valid());
-    } else if (actualEmailInput === 'dlbAtSymbol') {
-        await expect(EmailorPhoneInput).toHaveValue(TestData.email.dblAtSymbol());
-    } else if (actualEmailInput === 'dotNatSymbol') {
-        await expect(EmailorPhoneInput).toHaveValue(TestData.email.dotNatSymbol());
-    } else if (actualEmailInput === 'atSymbolNdot') {
-        await expect(EmailorPhoneInput).toHaveValue(TestData.email.atSymbolNdot());
-    } else if (actualEmailInput === 'lackDot') {
-        await expect(EmailorPhoneInput).toHaveValue(TestData.email.lackDot());
-    } else if (actualEmailInput === 'lackDomain') {
-        await expect(EmailorPhoneInput).toHaveValue(TestData.email.lackDomain());
-    } else if (actualEmailInput === 'existing') {
-        await expect(EmailorPhoneInput).toHaveValue(TestData.email.existing);
-    }
+export async function expectedEmail(page: Page, type: keyof typeof testData.email) {
+    const emailnPhoneInput = page.getByLabel('Mobile number or email address');
+    const expectedEmailInput = testData.email[type]();
+    const actualEmailInput = await emailnPhoneInput.inputValue();
+    expect(actualEmailInput).toEqual(expectedEmailInput);
 }
 
-export async function expectedPhone(page: Page) {
+export async function expectedPhone(page: Page, type: keyof typeof testData.phone) {
 
-    const EmailorPhoneInput = page.getByLabel('Mobile number or email address');
-    const acutalPhoneInput = await EmailorPhoneInput.inputValue();
-    if (acutalPhoneInput === TestData.phone.valid()) {
-        await expect(EmailorPhoneInput).toHaveValue(TestData.phone.valid());
-    } else if (acutalPhoneInput === TestData.phone.short()) {
-        await expect(EmailorPhoneInput).toHaveValue(TestData.phone.short());
-    } else if (acutalPhoneInput === TestData.phone.onlyAlpha()) {
-        await expect(EmailorPhoneInput).toHaveValue(TestData.phone.onlyAlpha());
-    } else if (acutalPhoneInput === TestData.phone.existing) {
-        await expect(EmailorPhoneInput).toHaveValue(TestData.phone.existing)
-    }
+    const emailnPhoneInput = page.getByLabel('Mobile number or email address');
+    const expectedPhoneInput = testData.phone[type]();
+    const actualPhoneInput = await emailnPhoneInput.inputValue();
+    expect(actualPhoneInput).toEqual(expectedPhoneInput);
 }
 
-export async function expectedNewPassword(page: Page) {
+export async function expectedNewPassword(page: Page, type: keyof typeof testData.password) {
 
     const newPassword = page.getByLabel('New password');
+    const expectedPasswordInput = testData.password[type]();
     const actualPasswordInput = await newPassword.inputValue();
-    if (actualPasswordInput === 'valid') {
-        await expect(newPassword).toHaveValue(TestData.password.valid())
-    } else if (actualPasswordInput === 'alphaAndNumber') {
-        await expect(newPassword).toHaveValue(TestData.password.alphaAndNumber())
-    } else if (actualPasswordInput === 'onlyAlpha') {
-        await expect(newPassword).toHaveValue(TestData.password.onlyAlpha())
-    } else if (actualPasswordInput === 'onlyNumber') {
-        await expect(newPassword).toHaveValue(TestData.password.onlyNumber())
-    } else if (actualPasswordInput === 'short') {
-        await expect(newPassword).toHaveValue(TestData.password.short())
-    }
+    expect(actualPasswordInput).toEqual(expectedPasswordInput);
 }
 
 export async function expectedSignUpResponse(page: Page) {

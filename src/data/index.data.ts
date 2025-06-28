@@ -1,6 +1,6 @@
 import {firstName, surName, dateOfBirth, gender, email, phone, pronoun, genderOptional, password} from'./register.data'
 
-export const TestData = {
+export const testData = {
     firstName,
     surName,
     dateOfBirth,

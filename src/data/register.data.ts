@@ -8,14 +8,14 @@ export function generateVietnamPhone(prefix: string = '09'): string {
 export const firstName = {
     "valid": () => faker.person.firstName(),
     "invalid": () => faker.string.alphanumeric({ length: 7 }),
-    "specialChar": "!@#$%^&*()",
+    "specialChar": () => "!@#$%^&*()",
     "short": () => faker.string.alpha({ length: 1 })
 }
 
 export const surName = {
     "valid": () => faker.person.lastName(),
     "invalid": () => faker.string.alphanumeric({ length: 7 }),
-    "specialChar": "!@#$%^&*()",
+    "specialChar": () => "!@#$%^&*()",
     "short": () => faker.string.alpha({ length: 1 })
 }
 
@@ -39,14 +39,14 @@ export const email = {
     "atSymbolNdot": () => faker.string.alphanumeric({ length: 10 }) + '@.' + faker.string.alpha({ length: 5 }) + '.com',
     "lackDot": () => faker.string.alphanumeric({ length: 10 }) + '@' + faker.string.alpha({ length: 5 }) + 'com',
     "lackDomain": () => faker.string.alphanumeric({ length: 10 }) + '@',
-    "existing": "uyenthanh.nguenvu@gmail.com"
+    "existing": () => "uyenthanh.nguenvu@gmail.com"
 }
 
 export const phone = {
     "valid": () => generateVietnamPhone(),
     "short": () => faker.string.numeric({ length: 5, allowLeadingZeros: true }),
     "onlyAlpha": () => faker.string.alpha({ length: 9 }),
-    "existing": "0961544406"
+    "existing": () => "0961544406"
 }
 
 export const pronoun = {
